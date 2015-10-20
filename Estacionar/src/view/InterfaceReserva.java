@@ -23,9 +23,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import model.bean.Carro;
+import model.bean.Cliente;
 import model.bean.Reserva;
 import model.bean.Vaga;
 import model.dao.ReservaDao;
+import model.dao.Servicos;
 
 /**
  *
@@ -37,6 +39,8 @@ public class InterfaceReserva implements ActionListener{
     ReservaDao reservadao=new ReservaDao();
     Carro carro=new Carro();
     Vaga vaga=new Vaga();
+    Servicos servico=new Servicos();
+    
     String tes;
     String tes2;
     
@@ -170,15 +174,18 @@ public class InterfaceReserva implements ActionListener{
         
         botaosalvar.addActionListener(this);
         botaoentrada.addActionListener(this);
-        //botaosaida.addActionListener(this);
+        botaosair.addActionListener(this);
+        
+        servico.preencherComboCarro(jccarro);
+        servico.preencherComboVaga(jcvaga);
         
     }
     
     public void iniciarcronometro(){
         Timer timer = null;
         
-        final SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
-        final SimpleDateFormat formathr = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
+        final SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        final SimpleDateFormat formathr = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         
         txthrentrada.setText(format.format(new Date().getTime()));
         
@@ -187,74 +194,13 @@ public class InterfaceReserva implements ActionListener{
         //System.out.println(tes);
         
     }
+    public void limparTela(){
+        txthrentrada.setText("");
+        txtstatus.setText("");
+        //jccarro.setToolTipText("Carro");
+        
+    }
     
-//    public void iniciarcronometro2(){
-//        Timer timer = null;
-//        
-//        final SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
-//        final SimpleDateFormat formathr = new SimpleDateFormat("HH:mm");
-//        
-//        txthrsaida.setText(format.format(new Date().getTime()));
-//        
-//        //reserva.setResdthrsai(format.format(new Date().getTime()));
-//        
-//        tes2=formathr.format(new Date().getTime());
-//        
-//        //System.out.println(tes2);
-//        
-////        
-//    }
-//    public void iniciarcronometro3() throws ParseException{
-//        Timer timer = null;
-//        
-//        final SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-//        
-//        //tes3=format.format(new Date().getTime());
-//        
-//        //System.out.println(tes3);
-//        Date ent=null;
-//        Date sai=null;
-//        
-//        final SimpleDateFormat dfEntrada = new SimpleDateFormat("HH:mm");    
-//        ent = dfEntrada.parse(tes);  
-//          
-//        final SimpleDateFormat dfSaida = new SimpleDateFormat("HH:mm");    
-//        sai = dfSaida.parse(tes2);
-//        
-//        long min = sai.getTime() - ent.getTime(); 
-//        
-//        long min2=(long) (min*0.067);
-//          
-//        float resultado = (int) ((min / 1000)/60);
-//        float resutl = (int) ((min2/1000)/60);
-//        
-//        //resultado=String.valueOf(format.format(new Date().getTime()));
-//        
-//        
-//        txthrduracao.setText(String.valueOf(resultado));
-//        txtvalor.setText(String.valueOf(resutl));
-//        
-//        //reserva.setResdthrdur(String.valueOf(resultado));
-//          
-//        //System.out.println("Diferença: " + resultado + " minuto(s)");
-//        //System.out.println("Total: " + resutl + " real");
-//        
-//      
-//    }
-    
-//    public boolean validarCmpos(){
-//        if((txtchassi.getText().length()==0||(txtplaca.getText().length()==0||(txtvalor.getText().length()==0||(txthrentrada.getText().length()==0))))){
-//            return true;
-//            
-//        }else{
-//            
-//            return false;
-//                    
-//                    
-//        }
-//        
-//               
-//    }
     
     public static void main(String[]Args){
         InterfaceReserva tela= new InterfaceReserva();
@@ -264,23 +210,28 @@ public class InterfaceReserva implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent evento) {
         if (evento.getSource().equals(botaosalvar)){
+            vaga=(Vaga) jcvaga.getSelectedItem();
+            reserva.setVaga(new Vaga());
+            reserva.setVaga(vaga);
+            
+            carro=(Carro) jccarro.getSelectedItem();
+            reserva.setCarro(new Carro());
+            reserva.setCarro(carro);
+            
             
             reserva.setResdthrent(txthrentrada.getText());
             reserva.setResestatus(txtstatus.getText());
             
+            reservadao.salvarReserva(reserva);
+            limparTela();
             
-//            automovel.setAutchassi(txtchassi.getText());
-//            automovel.setAutplaca(txtplaca.getText());
-//            automovel.setAutmarca(txtvalor.getText());
-//            automovel.setAutmodelo(txthrentrada.getText());
-//            automovel.setAutvldiaria(Double.parseDouble(txthrsaida.getText()));
-//            automovelDao.salvarAutomovel(automovel);
-            
-            //JOptionPane.showMessageDialog(null,"Parabens voce conseguiu!!");
             
         }else if(evento.getSource().equals(botaoentrada)){
             //txthrentrada.setText(reserva.getResdthrent());
             iniciarcronometro();
+        }else if(evento.getSource().equals(botaosair)){
+            System.exit(0);
+            
         }
         
     }

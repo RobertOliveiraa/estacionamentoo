@@ -15,6 +15,13 @@ public class Vaga {
     private Integer vagqtde;
     private Double vagvalor;
 
+    @Override
+    public String toString() {
+        return String.valueOf(vagqtde);
+    }
+    
+    
+
     public Integer getVagcod() {
         return vagcod;
     }

@@ -40,17 +40,34 @@ public class ReservaDao {
     
     public void salvarReserva(Reserva reserva){
         try{
-            sql="insert into reserva (rescarcod,resvagcod,resvalor,resdthrent,resdthrsai,resdthrdur,respagamento,restroco,resestatus) values(?,?,?,?,?,?,?,?,?)";
+            sql="insert into reserva (rescarcod,resvagcod,resdthrent,resestatus) values(?,?,?,?)";
             pstm=con.prepareStatement(sql);
-            pstm.setObject(1, reserva.getCarro());
+            pstm.setObject(1, reserva.getCarro().getCarcod());
             pstm.setObject(2, reserva.getVaga().getVagcod());
-            pstm.setDouble(3, reserva.getResvalor());
-            pstm.setString(4, reserva.getResdthrent());
-            pstm.setString(5, reserva.getResdthrsai());
-            pstm.setString(6, reserva.getResdthrdur());
-            pstm.setDouble(7, reserva.getRespagamento());
-            pstm.setDouble(8, reserva.getRestroco());
-            pstm.setString(9, reserva.getResestatus());
+            pstm.setString(3, reserva.getResdthrent());
+            pstm.setString(4, reserva.getResestatus());
+            
+            pstm.execute();
+            
+            
+            JOptionPane.showMessageDialog(null, "Dados salvos Com Sucesso");
+        }catch(Exception erro){
+            JOptionPane.showMessageDialog(null, "Dados nao Salvo\n"+erro.getMessage());
+        }
+    }
+    
+    public void UpdateReserva(Reserva reserva){
+        try{
+            sql="update reserva set resvalor=?,resdthrsai=?,resdthrdur=?,respagamento=?,restroco=?,resestatus=? where rescod=?";
+            pstm=con.prepareStatement(sql);
+            pstm.setDouble(1, reserva.getResvalor());
+            pstm.setString(2, reserva.getResdthrsai());
+            pstm.setString(3, reserva.getResdthrdur());
+            pstm.setDouble(4, reserva.getRespagamento());
+            pstm.setDouble(5, reserva.getRestroco());
+            pstm.setString(6, reserva.getResestatus());
+            pstm.setInt(7, reserva.getRescod());
+            
             
             pstm.execute();
             

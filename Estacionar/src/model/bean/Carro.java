@@ -16,7 +16,15 @@ public class Carro {
     private String carmodelo;
     private String carcor;
 
+    @Override
+    public String toString() {
+        return carplaca;
+    }
+    
+    
+
     public Carro() {
+        
     }
 
     public Integer getCarcod() {

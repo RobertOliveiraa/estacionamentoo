@@ -255,16 +255,19 @@ public class InterfaceReservaSaida implements ActionListener{
         //min2=min2/900000;
         System.out.println (hms); // deve mostrar "01:16:07"
         
-        double result=((((hora*60)+minuto+(segundo/60))/15));
-        DecimalFormat df = new DecimalFormat("#,###.00");
+        double result=(float) (((hora*60.0)+minuto+(segundo/60))*0.067);
+        
+        DecimalFormat df = new DecimalFormat("#.00");
         df.format(result);
         
         //resultado=String.valueOf(format.format(new Date().getTime()));
         
         
         txthrduracao.setText(String.valueOf(hms));
-        txtvalor.setText(String.valueOf(result));
+        int ponto = String.valueOf(result).indexOf('.');
+        txtvalor.setText(String.valueOf(result).substring(0, ponto + 3));
         System.out.println(min2);
+        System.out.println(result);
         
         //reserva.setResdthrdur(String.valueOf(resultado));
           
@@ -297,6 +300,20 @@ public class InterfaceReservaSaida implements ActionListener{
     public void actionPerformed(ActionEvent evento) {
         if (evento.getSource().equals(botaosalvar)){
             
+            reserva=(Reserva) jcreserva.getSelectedItem();
+            reserva.setCarro(new Carro());
+            reserva.setCarro(carro);
+            
+            reserva.setResdthrent(txthrentrada.getText());
+            reserva.setResdthrdur(txthrduracao.getText());
+            reserva.setResdthrsai(txthrsaida.getText());
+            reserva.setResestatus(txtstatus.getText());
+            reserva.setRespagamento(Double.parseDouble(txtpagamento.getText()));
+            reserva.setRestroco(Double.parseDouble(txtvalor.getText()));
+            reserva.setResvalor(Double.parseDouble(txtvalor.getText()));
+            
+            reservadao.UpdateReserva(reserva);
+            
 //            automovel.setAutchassi(txtchassi.getText());
 //            automovel.setAutplaca(txtplaca.getText());
 //            automovel.setAutmarca(txtvalor.getText());
@@ -316,6 +333,7 @@ public class InterfaceReservaSaida implements ActionListener{
             }
             
         }else if(evento.getSource().equals(botaocalculo)){
+            
             reserva.setRespagamento(Double.parseDouble(txtpagamento.getText()));
             reserva.setResvalor(Double.parseDouble(txtvalor.getText()));
             //txttroco.setText(String.valueOf(reservadao.calcularTotal(reserva.getResvalor(), reserva.getRespagamento())));

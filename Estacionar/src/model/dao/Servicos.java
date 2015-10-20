@@ -7,8 +7,10 @@ package model.dao;
 
 import java.util.List;
 import javax.swing.JComboBox;
+import model.bean.Carro;
 import model.bean.Reserva;
 import model.bean.Cliente;
+import model.bean.Vaga;
 
 /**
  *
@@ -31,18 +33,30 @@ public class Servicos {
 //        
 //    }
     
-//    public void preencherComboReserva(JComboBox comboReserva){
-//         
-//        
-//        
-//        ReservaDao autodao=new ReservaDao();
-//        List<Reserva> listagem=autodao.listarReserva();
-//        
-//        for(Reserva a: listagem){
-//            comboReserva.addItem(a);
-//            
-//        }
-//        }
+    public void preencherComboCarro(JComboBox comboCarro){
+         
+        
+        
+        CarroDao carrodao=new CarroDao();
+        List<Carro> listagem=carrodao.listarCliente();
+        
+        for(Carro c: listagem){
+            comboCarro.addItem(c);
+            
+        }
+        }
+    public void preencherComboVaga(JComboBox comboVaga){
+         
+        
+        
+        VagaDao vagadao=new VagaDao();
+        List<Vaga> listagem=vagadao.listarVaga();
+        
+        for(Vaga v: listagem){
+            comboVaga.addItem(v);
+            
+        }
+        }
     public void preencherComboReserva(JComboBox comboReserva){
          
         
