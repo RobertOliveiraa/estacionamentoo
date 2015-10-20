@@ -27,8 +27,17 @@ public class ReservaDao {
     
     public void salvarReserva(Reserva reserva){
         try{
-            sql="insert into aluguel (aluclicod,aluautcod,aludtdevolucao,aludtprevisaodevol,aludtaluguel,aluqtddias,aluvalor)values(?,?,?,?,?,?,?)";
+            sql="insert into reserva (rescarcod,resvagcod,resvalor,resdthrent,resdthrsai,resdthrdur,respagamento,restroco,resestatus) values(?,?,?,?,?,?,?,?,?)";
             pstm=con.prepareStatement(sql);
+            pstm.setObject(1, reserva.getCarro());
+            pstm.setObject(2, reserva.getCliente());
+            pstm.setDouble(3, reserva.getResvalor());
+            pstm.setString(4, reserva.getResdthrent());
+            pstm.setString(5, reserva.getResdthrsai());
+            pstm.setString(6, reserva.getResdthrdur());
+            pstm.setDouble(7, reserva.getRespagamento());
+            pstm.setDouble(8, reserva.getRestroco());
+            pstm.setString(9, reserva.getResestatus());
             
             pstm.execute();
             
