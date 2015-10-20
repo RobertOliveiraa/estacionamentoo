@@ -31,6 +31,13 @@ public class ReservaDao {
     List<Reserva> lista=new ArrayList<>();
     Reserva reser=new Reserva();
     
+    public double calcularTotal(double totalest, double pagamento){
+        double total=0;
+        total=pagamento-totalest;
+        return total;
+    }
+    
+    
     public void salvarReserva(Reserva reserva){
         try{
             sql="insert into reserva (rescarcod,resvagcod,resvalor,resdthrent,resdthrsai,resdthrdur,respagamento,restroco,resestatus) values(?,?,?,?,?,?,?,?,?)";

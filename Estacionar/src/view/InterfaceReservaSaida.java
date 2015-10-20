@@ -8,6 +8,7 @@ package view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -172,6 +173,7 @@ public class InterfaceReservaSaida implements ActionListener{
         botaosalvar.addActionListener(this);
         //botaoentrada.addActionListener(this);
         botaosaida.addActionListener(this);
+        botaocalculo.addActionListener(this);
         
         serv.preencherComboReserva(jcreserva);
         
@@ -195,8 +197,8 @@ public class InterfaceReservaSaida implements ActionListener{
     public void iniciarcronometro2(){
         Timer timer = null;
         
-        final SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
-        final SimpleDateFormat formathr = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
+        final SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        final SimpleDateFormat formathr = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         
         txthrsaida.setText(format.format(new Date().getTime()));
         
@@ -212,32 +214,57 @@ public class InterfaceReservaSaida implements ActionListener{
     public void iniciarcronometro3() throws ParseException{
         Timer timer = null;
         
-        final SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
+        final SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         
         //tes3=format.format(new Date().getTime());
         
         //System.out.println(tes3);
         Date ent=null;
         Date sai=null;
+        Date sai2=null;
         
-        final SimpleDateFormat dfEntrada = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");    
+        final SimpleDateFormat dfEntrada = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");    
         ent = dfEntrada.parse(tes);  
           
-        final SimpleDateFormat dfSaida = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");    
+        final SimpleDateFormat dfSaida = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");    
         sai = dfSaida.parse(tes2);
+        
+//        final SimpleDateFormat dfteste = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");    
+//        sai2 = dfteste.parse(hms);
         
         long min = sai.getTime() - ent.getTime(); 
         
-        long min2=(long) (min*0.067);
+        System.out.println(min);
+        
+        //long min2=min/900000;
           
-        float resultado = (int) ((min / 1000)/60);
-        float resutl = (int) ((min2/1000)/60);
+        float resultado = (float) ((min / 1000));
+        //float result = (int) ((min2/1000)/60);
+        
+        
+        int segundos = (int) resultado; 
+        int segundo = segundos % 60; 
+        int minutos = segundos / 60; 
+        int minuto = minutos % 60; 
+        int hora = minutos / 60; 
+        String hms = String.format ("%02d:%02d:%02d", hora, minuto, segundo); 
+        
+        final SimpleDateFormat dfteste = new SimpleDateFormat("HH:mm:ss");    
+        sai2 = dfteste.parse(hms);
+        long min2=sai2.getTime();
+        //min2=min2/900000;
+        System.out.println (hms); // deve mostrar "01:16:07"
+        
+        double result=((((hora*60)+minuto+(segundo/60))/15));
+        DecimalFormat df = new DecimalFormat("#,###.00");
+        df.format(result);
         
         //resultado=String.valueOf(format.format(new Date().getTime()));
         
         
-        txthrduracao.setText(String.valueOf(resultado));
-        txtvalor.setText(String.valueOf(resutl));
+        txthrduracao.setText(String.valueOf(hms));
+        txtvalor.setText(String.valueOf(result));
+        System.out.println(min2);
         
         //reserva.setResdthrdur(String.valueOf(resultado));
           
@@ -288,6 +315,11 @@ public class InterfaceReservaSaida implements ActionListener{
                 //Logger.getLogger(InterfaceReserva.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+        }else if(evento.getSource().equals(botaocalculo)){
+            reserva.setRespagamento(Double.parseDouble(txtpagamento.getText()));
+            reserva.setResvalor(Double.parseDouble(txtvalor.getText()));
+            //txttroco.setText(String.valueOf(reservadao.calcularTotal(reserva.getResvalor(), reserva.getRespagamento())));
+            txttroco.setText(String.valueOf(reservadao.calcularTotal(reserva.getResvalor(),reserva.getRespagamento())));
         }
         
     }

@@ -265,6 +265,10 @@ public class InterfaceReserva implements ActionListener{
     public void actionPerformed(ActionEvent evento) {
         if (evento.getSource().equals(botaosalvar)){
             
+            reserva.setResdthrent(txthrentrada.getText());
+            reserva.setResestatus(txtstatus.getText());
+            
+            
 //            automovel.setAutchassi(txtchassi.getText());
 //            automovel.setAutplaca(txtplaca.getText());
 //            automovel.setAutmarca(txtvalor.getText());
