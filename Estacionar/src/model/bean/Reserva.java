@@ -13,7 +13,7 @@ public class Reserva {
     
     private Integer rescod;
     private Carro carro;
-    private Cliente cliente;
+    private Vaga vaga;
     private Double resvalor;
     private String resdthrent;
     private String resdthrsai;
@@ -24,6 +24,14 @@ public class Reserva {
     
     public Reserva(){
         
+    }
+
+    public Vaga getVaga() {
+        return vaga;
+    }
+
+    public void setVaga(Vaga vaga) {
+        this.vaga = vaga;
     }
 
     public Integer getRescod() {
@@ -40,14 +48,6 @@ public class Reserva {
 
     public void setCarro(Carro carro) {
         this.carro = carro;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public Double getResvalor() {

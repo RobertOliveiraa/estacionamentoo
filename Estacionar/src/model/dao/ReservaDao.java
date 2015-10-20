@@ -30,7 +30,7 @@ public class ReservaDao {
             sql="insert into reserva (rescarcod,resvagcod,resvalor,resdthrent,resdthrsai,resdthrdur,respagamento,restroco,resestatus) values(?,?,?,?,?,?,?,?,?)";
             pstm=con.prepareStatement(sql);
             pstm.setObject(1, reserva.getCarro());
-            pstm.setObject(2, reserva.getCliente());
+            pstm.setObject(2, reserva.getVaga().getVagcod());
             pstm.setDouble(3, reserva.getResvalor());
             pstm.setString(4, reserva.getResdthrent());
             pstm.setString(5, reserva.getResdthrsai());
