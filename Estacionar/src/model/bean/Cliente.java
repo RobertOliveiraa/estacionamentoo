@@ -12,8 +12,8 @@ package model.bean;
 public class Cliente {
     private Integer clicod;
     private String clinome;
-    private Integer clicpf;
-    private Integer clitelefone;
+    private String clicpf;
+    private String clitelefone;
 
     public Integer getClicod() {
         return clicod;
@@ -31,22 +31,22 @@ public class Cliente {
         this.clinome = clinome;
     }
 
-    public Integer getClicpf() {
+    public String getClicpf() {
         return clicpf;
     }
 
-    public void setClicpf(Integer clicpf) {
+    public void setClicpf(String clicpf) {
         this.clicpf = clicpf;
     }
 
-    public Integer getClitelefone() {
+    public String getClitelefone() {
         return clitelefone;
     }
 
-    public void setClitelefone(Integer clitelefone) {
+    public void setClitelefone(String clitelefone) {
         this.clitelefone = clitelefone;
     }
-    
+
     
     
 }

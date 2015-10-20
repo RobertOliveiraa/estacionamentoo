@@ -6,14 +6,12 @@
 package view;
 
 import java.awt.Color;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import model.bean.Cliente;
 import model.dao.ClienteDao;
@@ -110,8 +108,8 @@ public class InterfaceCliente implements ActionListener {
     public void actionPerformed(ActionEvent evento) {
         if (evento.getSource().equals(botaosalvar)){
            cliente.setClinome(txtnome.getText());
-           cliente.setClicpf(Integer.parseInt(txtcpf.getText()));
-           cliente.setClitelefone(Integer.parseInt(txttelefone.getText()));
+           cliente.setClicpf(txtcpf.getText());
+           cliente.setClitelefone(txttelefone.getText());
            clienteDao.salvarCliente(cliente);
 
             

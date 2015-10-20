@@ -48,6 +48,8 @@ public class ClienteDao {
                 Cliente cli=new Cliente();
                 cli.setClicod(rs.getInt(1));
                 cli.setClinome(rs.getString(2));
+       
+                
                 lista.add(cli);
                 
             }
