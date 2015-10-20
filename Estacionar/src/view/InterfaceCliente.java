@@ -110,8 +110,8 @@ public class InterfaceCliente implements ActionListener {
     public void actionPerformed(ActionEvent evento) {
         if (evento.getSource().equals(botaosalvar)){
            cliente.setClinome(txtnome.getText());
-           cliente.setClicpf(Integer.parseInt(txtcpf.getText()));
-           cliente.setClitelefone(Integer.parseInt(txttelefone.getText()));
+           cliente.setClicpf(txtcpf.getText());
+           cliente.setClitelefone(txttelefone.getText());
            clienteDao.salvarCliente(cliente);
 
             
