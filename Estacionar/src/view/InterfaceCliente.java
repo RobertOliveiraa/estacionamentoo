@@ -101,8 +101,7 @@ public class InterfaceCliente implements ActionListener {
        public static void main(String[]Args){
         InterfaceCliente tela= new InterfaceCliente();
         tela.criarTela();
-        SimpleMenuEx menu=new SimpleMenuEx();
-        menu.setVisible(true);
+        
         
         
     }
