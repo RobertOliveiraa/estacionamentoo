@@ -19,9 +19,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import model.bean.Carro;
+import model.bean.Cliente;
 import model.bean.Reserva;
 import model.bean.Vaga;
 import model.dao.ReservaDao;
+import model.dao.Servicos;
 
 /**
  *
@@ -32,6 +34,8 @@ public class InterfaceReservaSaida implements ActionListener{
     ReservaDao reservadao=new ReservaDao();
     Carro carro=new Carro();
     Vaga vaga=new Vaga();
+    Servicos serv=new Servicos();
+    
     String tes;
     String tes2;
     
@@ -169,13 +173,30 @@ public class InterfaceReservaSaida implements ActionListener{
         //botaoentrada.addActionListener(this);
         botaosaida.addActionListener(this);
         
+        serv.preencherComboReserva(jcreserva);
+        
+        
+        jcreserva.addActionListener(new ActionListener(){
+    public void actionPerformed(ActionEvent e)
+    {
+        reserva=(Reserva) jcreserva.getSelectedItem();
+        txthrentrada.setText(reserva.getResdthrent());
+        txtstatus.setText(reserva.getResestatus());
+        
+            //aluguel.setCliente(new Cliente());
+            //aluguel.setCliente(cli);
+        System.out.println(jcreserva);
+    }
+});
+    
+        
     }
     
     public void iniciarcronometro2(){
         Timer timer = null;
         
         final SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
-        final SimpleDateFormat formathr = new SimpleDateFormat("HH:mm");
+        final SimpleDateFormat formathr = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
         
         txthrsaida.setText(format.format(new Date().getTime()));
         
@@ -191,7 +212,7 @@ public class InterfaceReservaSaida implements ActionListener{
     public void iniciarcronometro3() throws ParseException{
         Timer timer = null;
         
-        final SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        final SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
         
         //tes3=format.format(new Date().getTime());
         
@@ -199,10 +220,10 @@ public class InterfaceReservaSaida implements ActionListener{
         Date ent=null;
         Date sai=null;
         
-        final SimpleDateFormat dfEntrada = new SimpleDateFormat("HH:mm");    
+        final SimpleDateFormat dfEntrada = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");    
         ent = dfEntrada.parse(tes);  
           
-        final SimpleDateFormat dfSaida = new SimpleDateFormat("HH:mm");    
+        final SimpleDateFormat dfSaida = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");    
         sai = dfSaida.parse(tes2);
         
         long min = sai.getTime() - ent.getTime(); 

@@ -21,6 +21,13 @@ public class Reserva {
     private Double respagamento;
     private Double restroco;
     private String resestatus;
+
+    @Override
+    public String toString() {
+        return resdthrent;
+    }
+    
+    
     
     public Reserva(){
         

@@ -178,7 +178,7 @@ public class InterfaceReserva implements ActionListener{
         Timer timer = null;
         
         final SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
-        final SimpleDateFormat formathr = new SimpleDateFormat("HH:mm");
+        final SimpleDateFormat formathr = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
         
         txthrentrada.setText(format.format(new Date().getTime()));
         
