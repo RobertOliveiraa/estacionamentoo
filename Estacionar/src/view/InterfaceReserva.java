@@ -13,17 +13,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import model.bean.Carro;
-import model.bean.Cliente;
 import model.bean.Reserva;
 import model.bean.Vaga;
 import model.dao.ReservaDao;
@@ -83,11 +79,11 @@ public class InterfaceReserva implements ActionListener{
     
     public void criarTela(){
     
-        tela.setBounds(250, 200, 500, 650);
+        tela.setBounds(400, 200, 500, 500);
         tela.setVisible(true);
         tela.setTitle("RESERVA ENTRADA");
         tela.add(painel);
-        tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//finaliza o processo do frame
+        //tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//finaliza o processo do frame
         tela.setResizable(true);//desativar o maximizar
         
         painel.setLayout(null);
@@ -175,6 +171,7 @@ public class InterfaceReserva implements ActionListener{
         botaosalvar.addActionListener(this);
         botaoentrada.addActionListener(this);
         botaosair.addActionListener(this);
+        botaolimpar.addActionListener(this);
         
         servico.preencherComboCarro(jccarro);
         servico.preencherComboVaga(jcvaga);
@@ -231,6 +228,10 @@ public class InterfaceReserva implements ActionListener{
             iniciarcronometro();
         }else if(evento.getSource().equals(botaosair)){
             System.exit(0);
+            
+        }
+        else if(evento.getSource().equals(botaolimpar)){
+            limparTela();
             
         }
         

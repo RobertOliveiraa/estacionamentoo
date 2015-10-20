@@ -52,7 +52,7 @@ public class InterfaceCliente implements ActionListener {
         tela.setVisible(true);
         tela.setTitle("Cadastro Cliente");
         tela.add(painel);
-        tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//finaliza o processo do frame
+        //tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//finaliza o processo do frame
         tela.setResizable(true);//desativar o maximizar
         
         painel.setLayout(null);
@@ -91,6 +91,7 @@ public class InterfaceCliente implements ActionListener {
         botaosair.setBounds(250, 410, 100, 30);
         
         botaosalvar.addActionListener(this);
+        botaosair.addActionListener(this);
         
         }
         
@@ -113,6 +114,8 @@ public class InterfaceCliente implements ActionListener {
            clienteDao.salvarCliente(cliente);
 
             
+        }else if(evento.getSource().equals(botaosair)){
+            System.exit(0);
         }
         
     }

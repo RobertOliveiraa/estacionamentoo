@@ -79,11 +79,11 @@ public class InterfaceReservaSaida implements ActionListener{
     
     public void criarTela(){
     
-        tela.setBounds(250, 200, 500, 650);
+        tela.setBounds(400, 100, 500, 650);
         tela.setVisible(true);
         tela.setTitle("RESERVA SAIDA");
         tela.add(painel);
-        tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//finaliza o processo do frame
+        //tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//finaliza o processo do frame
         tela.setResizable(true);//desativar o maximizar
         
         painel.setLayout(null);
@@ -171,9 +171,10 @@ public class InterfaceReservaSaida implements ActionListener{
         botaocalculo.setBounds(370, 370, 100, 30);
         
         botaosalvar.addActionListener(this);
-        //botaoentrada.addActionListener(this);
+        botaosaida.addActionListener(this);
         botaosaida.addActionListener(this);
         botaocalculo.addActionListener(this);
+        botaolimpar.addActionListener(this);
         
         serv.preencherComboReserva(jcreserva);
         
@@ -185,9 +186,7 @@ public class InterfaceReservaSaida implements ActionListener{
         txthrentrada.setText(reserva.getResdthrent());
         txtstatus.setText(reserva.getResestatus());
         
-            //aluguel.setCliente(new Cliente());
-            //aluguel.setCliente(cli);
-        System.out.println(jcreserva);
+            
     }
 });
     
@@ -260,19 +259,12 @@ public class InterfaceReservaSaida implements ActionListener{
         DecimalFormat df = new DecimalFormat("#.00");
         df.format(result);
         
-        //resultado=String.valueOf(format.format(new Date().getTime()));
-        
         
         txthrduracao.setText(String.valueOf(hms));
         int ponto = String.valueOf(result).indexOf('.');
         txtvalor.setText(String.valueOf(result).substring(0, ponto + 3));
-        System.out.println(min2);
-        System.out.println(result);
         
-        //reserva.setResdthrdur(String.valueOf(resultado));
-          
-        //System.out.println("Diferença: " + resultado + " minuto(s)");
-        //System.out.println("Total: " + resutl + " real");
+        
         
       
     }
@@ -290,6 +282,17 @@ public class InterfaceReservaSaida implements ActionListener{
 //        
 //               
 //    }
+    
+    public void limpartela(){
+            reserva.setResdthrent("");
+            reserva.setResdthrdur("");
+            reserva.setResdthrsai("");
+            reserva.setResestatus("");
+            reserva.setRespagamento(Double.parseDouble(""));
+            reserva.setRestroco(Double.parseDouble(""));
+            reserva.setResvalor(Double.parseDouble(""));
+        
+    }
     
     public static void main(String[]Args){
         InterfaceReservaSaida tela= new InterfaceReservaSaida();
@@ -313,15 +316,9 @@ public class InterfaceReservaSaida implements ActionListener{
             reserva.setResvalor(Double.parseDouble(txtvalor.getText()));
             
             reservadao.UpdateReserva(reserva);
+            limpartela();
             
-//            automovel.setAutchassi(txtchassi.getText());
-//            automovel.setAutplaca(txtplaca.getText());
-//            automovel.setAutmarca(txtvalor.getText());
-//            automovel.setAutmodelo(txthrentrada.getText());
-//            automovel.setAutvldiaria(Double.parseDouble(txthrsaida.getText()));
-//            automovelDao.salvarAutomovel(automovel);
-            
-            //JOptionPane.showMessageDialog(null,"Parabens voce conseguiu!!");
+
             
         }else if(evento.getSource().equals(botaosaida)){
             iniciarcronometro2();
@@ -338,6 +335,11 @@ public class InterfaceReservaSaida implements ActionListener{
             reserva.setResvalor(Double.parseDouble(txtvalor.getText()));
             //txttroco.setText(String.valueOf(reservadao.calcularTotal(reserva.getResvalor(), reserva.getRespagamento())));
             txttroco.setText(String.valueOf(reservadao.calcularTotal(reserva.getResvalor(),reserva.getRespagamento())));
+        }else if(evento.getSource().equals(botaosair)){
+            System.exit(0);
+        }
+        else if(evento.getSource().equals(botaolimpar)){
+            limpartela();
         }
         
     }

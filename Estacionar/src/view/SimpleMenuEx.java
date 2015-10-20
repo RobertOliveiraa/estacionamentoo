@@ -50,9 +50,9 @@ public class SimpleMenuEx extends JFrame {
     private void createMenuBar() {
 
         
-        setBackground(Color.yellow);
+        //setBackground(Color.yellow);
         JMenuBar menubar = new JMenuBar();
-        ImageIcon icon = new ImageIcon("exit.png");
+        ImageIcon icon = new ImageIcon("inserir.png");
         ImageIcon iconcli = new ImageIcon("cliente.png");
         ImageIcon iconcar = new ImageIcon("carro.png");
         ImageIcon iconent = new ImageIcon("cima.png");
@@ -61,7 +61,7 @@ public class SimpleMenuEx extends JFrame {
         
         //icon.getIconHeight(height);
          Image img = icon.getImage() ;
-         Image newimg = img.getScaledInstance( 25, 25,  java.awt.Image.SCALE_SMOOTH ) ;  
+         Image newimg = img.getScaledInstance( 20, 20,  java.awt.Image.SCALE_SMOOTH ) ;  
          icon = new ImageIcon( newimg );
          Image imgcli = iconcli.getImage() ;
          Image newimgcli = imgcli.getScaledInstance( 25, 25,  java.awt.Image.SCALE_SMOOTH ) ;  
@@ -95,20 +95,41 @@ public class SimpleMenuEx extends JFrame {
         filesaida.setMnemonic(KeyEvent.VK_F);
         fileRelatorio.setMnemonic(KeyEvent.VK_F);
         
-        JMenuItem eMenuInserirCliente = new JMenuItem("Inserir", icon);
+        JMenuItem eMenuInserirCliente = new JMenuItem("  Inserir", icon);
         eMenuInserirCliente.setMnemonic(KeyEvent.VK_E);
-        JMenuItem eMenuInserirCarro = new JMenuItem("Inserir", icon);
+        JMenuItem eMenuInserirCarro = new JMenuItem("  Inserir", icon);
         eMenuInserirCarro.setMnemonic(KeyEvent.VK_E);
-        JMenuItem eMenuInserirEntrada = new JMenuItem("Inserir", icon);
+        JMenuItem eMenuInserirEntrada = new JMenuItem("  Inserir", icon);
         eMenuInserirEntrada.setMnemonic(KeyEvent.VK_E);
-        JMenuItem eMenuInserirSaida = new JMenuItem("Inserir", icon);
+        JMenuItem eMenuInserirSaida = new JMenuItem("  Inserir", icon);
         eMenuInserirSaida.setMnemonic(KeyEvent.VK_E);
         //eMenuItem.setToolTipText("Exit application");
         eMenuInserirCliente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent event) {
-                //InterfaceAlterarAutomovel auto=new InterfaceAlterarAutomovel();
-                //auto.criarTela();
+                InterfaceCliente cliente=new InterfaceCliente();
+                cliente.criarTela();
+            }
+        });
+        eMenuInserirCarro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                InterfaceCarro carro=new InterfaceCarro();
+                //carro.criarTela();
+            }
+        });
+        eMenuInserirEntrada.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                InterfaceReserva reserva=new InterfaceReserva();
+                reserva.criarTela();
+            }
+        });
+        eMenuInserirSaida.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                InterfaceReservaSaida reservaSaida=new InterfaceReservaSaida();
+                reservaSaida.criarTela();
             }
         });
 
