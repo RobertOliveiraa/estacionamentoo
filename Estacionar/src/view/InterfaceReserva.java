@@ -46,8 +46,8 @@ public class InterfaceReserva implements ActionListener{
     JButton botaolimpar = new JButton("Limpar");
     JButton botaosair = new JButton("Sair");
     JButton botaoentrada = new JButton("Entrada");
-    JButton botaosaida = new JButton("Saida");
-    JButton botaocalculo = new JButton("Calcular");
+    //JButton botaosaida = new JButton("Saida");
+    //JButton botaocalculo = new JButton("Calcular");
     
     JComboBox<Carro> jccarro = new JComboBox<>();
     JComboBox<Vaga> jcvaga = new JComboBox<>();
@@ -56,18 +56,18 @@ public class InterfaceReserva implements ActionListener{
     //JTextField txtchassi= new JTextField();
     JLabel labelvaga = new JLabel("VAGA: ");
     //JTextField txtplaca= new JTextField();
-    JLabel labelvalor= new JLabel("TOTAL: ");
-    JTextField txtvalor= new JTextField();
+    //JLabel labelvalor= new JLabel("TOTAL: ");
+    //JTextField txtvalor= new JTextField();
     JLabel labelhrentrada = new JLabel("ENTRADA HR: ");
     JTextField txthrentrada= new JTextField();
-    JLabel labelhrsaida = new JLabel("SAIDA HR: ");
-    JTextField txthrsaida= new JTextField();
-    JLabel labelhrduracao = new JLabel("DURACAO HR: ");
-    JTextField txthrduracao= new JTextField();
-    JLabel labelpagamento = new JLabel("TOTAL A PAGAR: ");
-    JTextField txtpagamento= new JTextField();
-    JLabel labeltroco = new JLabel("TROCO: ");
-    JTextField txttroco= new JTextField();
+    //JLabel labelhrsaida = new JLabel("SAIDA HR: ");
+    //JTextField txthrsaida= new JTextField();
+    //JLabel labelhrduracao = new JLabel("DURACAO HR: ");
+    //JTextField txthrduracao= new JTextField();
+    //JLabel labelpagamento = new JLabel("TOTAL A PAGAR: ");
+    //JTextField txtpagamento= new JTextField();
+    //JLabel labeltroco = new JLabel("TROCO: ");
+    //JTextField txttroco= new JTextField();
     JLabel labelstatus = new JLabel("STATUS: ");
     JTextField txtstatus= new JTextField();
     
@@ -81,7 +81,7 @@ public class InterfaceReserva implements ActionListener{
     
         tela.setBounds(250, 200, 500, 650);
         tela.setVisible(true);
-        tela.setTitle("RESERVA");
+        tela.setTitle("RESERVA ENTRADA");
         tela.add(painel);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//finaliza o processo do frame
         tela.setResizable(true);//desativar o maximizar
@@ -97,18 +97,18 @@ public class InterfaceReserva implements ActionListener{
         //painel.add(txtchassi);
         painel.add(labelvaga);
         //painel.add(txtplaca);
-        painel.add(labelvalor);
-        painel.add(txtvalor);
+        //painel.add(labelvalor);
+        //painel.add(txtvalor);
         painel.add(labelhrentrada);
         painel.add(txthrentrada);
-        painel.add(labelhrsaida);
-        painel.add(txthrsaida);
-        painel.add(labelhrduracao);
-        painel.add(txthrduracao);
-        painel.add(labelpagamento);
-        painel.add(txtpagamento);
-        painel.add(labeltroco);
-        painel.add(txttroco);
+//        painel.add(labelhrsaida);
+//        painel.add(txthrsaida);
+//        painel.add(labelhrduracao);
+//        painel.add(txthrduracao);
+//        painel.add(labelpagamento);
+//        painel.add(txtpagamento);
+//        painel.add(labeltroco);
+//        painel.add(txttroco);
         painel.add(labelstatus);
         painel.add(txtstatus);
         painel.add(jccarro);
@@ -118,8 +118,8 @@ public class InterfaceReserva implements ActionListener{
         painel.add(botaolimpar);
         painel.add(botaosair);
         painel.add(botaoentrada);
-        painel.add(botaosaida);
-        painel.add(botaocalculo);
+        //painel.add(botaosaida);
+        //painel.add(botaocalculo);
         
         //painel.add(scrolObs);
         //painel.add(labelareaObs);
@@ -132,26 +132,26 @@ public class InterfaceReserva implements ActionListener{
         labelvaga.setBounds(30, 90,100, 30);
         jcvaga.setBounds(30,120, 440, 30);
         
-        labelvalor.setBounds(30, 150,100, 30);
-        txtvalor.setBounds(30,180, 440, 30);
+        //labelvalor.setBounds(30, 150,100, 30);
+        //txtvalor.setBounds(30,180, 440, 30);
         
-        labelhrentrada.setBounds(30, 210,100, 30);
-        txthrentrada.setBounds(30,240, 340, 30);
+        labelhrentrada.setBounds(30, 170,100, 30);
+        txthrentrada.setBounds(30,200, 340, 30);
         
-        labelhrsaida.setBounds(30, 270,100, 30);
-        txthrsaida.setBounds(30,300, 340, 30);
+//        labelhrsaida.setBounds(30, 270,100, 30);
+//        txthrsaida.setBounds(30,300, 340, 30);
+//        
+//        labelhrduracao.setBounds(30, 330,100, 30);
+//        txthrduracao.setBounds(30,360, 440, 30);
+//        
+//        labelpagamento.setBounds(30, 390,120, 30);
+//        txtpagamento.setBounds(30,410, 340, 30);
+//        
+//        labeltroco.setBounds(30, 440,100, 30);
+//        txttroco.setBounds(30,470, 440, 30);
         
-        labelhrduracao.setBounds(30, 330,100, 30);
-        txthrduracao.setBounds(30,360, 440, 30);
-        
-        labelpagamento.setBounds(30, 390,120, 30);
-        txtpagamento.setBounds(30,410, 340, 30);
-        
-        labeltroco.setBounds(30, 440,100, 30);
-        txttroco.setBounds(30,470, 440, 30);
-        
-        labelstatus.setBounds(30, 500,100, 30);
-        txtstatus.setBounds(30,530, 440, 30);
+        labelstatus.setBounds(30, 230,100, 30);
+        txtstatus.setBounds(30,260, 440, 30);
         
         //criando obersavacao
         
@@ -161,16 +161,16 @@ public class InterfaceReserva implements ActionListener{
         
         
         //criando botoes
-        botaosalvar.setBounds(30, 580, 100, 30); 
-        botaolimpar.setBounds(140, 580, 100, 30);
-        botaosair.setBounds(250, 580, 100, 30);
-        botaoentrada.setBounds(370, 240, 100, 30);
-        botaosaida.setBounds(370, 300, 100, 30);
-        botaocalculo.setBounds(370, 410, 100, 30);
+        botaosalvar.setBounds(30, 310, 100, 30); 
+        botaolimpar.setBounds(140, 310, 100, 30);
+        botaosair.setBounds(250, 310, 100, 30);
+        botaoentrada.setBounds(370, 200, 100, 30);
+//        botaosaida.setBounds(370, 300, 100, 30);
+//        botaocalculo.setBounds(370, 410, 100, 30);
         
         botaosalvar.addActionListener(this);
         botaoentrada.addActionListener(this);
-        botaosaida.addActionListener(this);
+        //botaosaida.addActionListener(this);
         
     }
     
@@ -188,59 +188,59 @@ public class InterfaceReserva implements ActionListener{
         
     }
     
-    public void iniciarcronometro2(){
-        Timer timer = null;
-        
-        final SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
-        final SimpleDateFormat formathr = new SimpleDateFormat("HH:mm");
-        
-        txthrsaida.setText(format.format(new Date().getTime()));
-        
-        //reserva.setResdthrsai(format.format(new Date().getTime()));
-        
-        tes2=formathr.format(new Date().getTime());
-        
-        //System.out.println(tes2);
-        
+//    public void iniciarcronometro2(){
+//        Timer timer = null;
 //        
-    }
-    public void iniciarcronometro3() throws ParseException{
-        Timer timer = null;
-        
-        final SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-        
-        //tes3=format.format(new Date().getTime());
-        
-        //System.out.println(tes3);
-        Date ent=null;
-        Date sai=null;
-        
-        final SimpleDateFormat dfEntrada = new SimpleDateFormat("HH:mm");    
-        ent = dfEntrada.parse(tes);  
-          
-        final SimpleDateFormat dfSaida = new SimpleDateFormat("HH:mm");    
-        sai = dfSaida.parse(tes2);
-        
-        long min = sai.getTime() - ent.getTime(); 
-        
-        long min2=(long) (min*0.067);
-          
-        float resultado = (int) ((min / 1000)/60);
-        float resutl = (int) ((min2/1000)/60);
-        
-        //resultado=String.valueOf(format.format(new Date().getTime()));
-        
-        
-        txthrduracao.setText(String.valueOf(resultado));
-        txtvalor.setText(String.valueOf(resutl));
-        
-        //reserva.setResdthrdur(String.valueOf(resultado));
-          
-        //System.out.println("Diferença: " + resultado + " minuto(s)");
-        //System.out.println("Total: " + resutl + " real");
-        
-      
-    }
+//        final SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy HH:mm:ss");
+//        final SimpleDateFormat formathr = new SimpleDateFormat("HH:mm");
+//        
+//        txthrsaida.setText(format.format(new Date().getTime()));
+//        
+//        //reserva.setResdthrsai(format.format(new Date().getTime()));
+//        
+//        tes2=formathr.format(new Date().getTime());
+//        
+//        //System.out.println(tes2);
+//        
+////        
+//    }
+//    public void iniciarcronometro3() throws ParseException{
+//        Timer timer = null;
+//        
+//        final SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+//        
+//        //tes3=format.format(new Date().getTime());
+//        
+//        //System.out.println(tes3);
+//        Date ent=null;
+//        Date sai=null;
+//        
+//        final SimpleDateFormat dfEntrada = new SimpleDateFormat("HH:mm");    
+//        ent = dfEntrada.parse(tes);  
+//          
+//        final SimpleDateFormat dfSaida = new SimpleDateFormat("HH:mm");    
+//        sai = dfSaida.parse(tes2);
+//        
+//        long min = sai.getTime() - ent.getTime(); 
+//        
+//        long min2=(long) (min*0.067);
+//          
+//        float resultado = (int) ((min / 1000)/60);
+//        float resutl = (int) ((min2/1000)/60);
+//        
+//        //resultado=String.valueOf(format.format(new Date().getTime()));
+//        
+//        
+//        txthrduracao.setText(String.valueOf(resultado));
+//        txtvalor.setText(String.valueOf(resutl));
+//        
+//        //reserva.setResdthrdur(String.valueOf(resultado));
+//          
+//        //System.out.println("Diferença: " + resultado + " minuto(s)");
+//        //System.out.println("Total: " + resutl + " real");
+//        
+//      
+//    }
     
 //    public boolean validarCmpos(){
 //        if((txtchassi.getText().length()==0||(txtplaca.getText().length()==0||(txtvalor.getText().length()==0||(txthrentrada.getText().length()==0))))){
@@ -277,15 +277,6 @@ public class InterfaceReserva implements ActionListener{
         }else if(evento.getSource().equals(botaoentrada)){
             //txthrentrada.setText(reserva.getResdthrent());
             iniciarcronometro();
-        }else if(evento.getSource().equals(botaosaida)){
-            iniciarcronometro2();
-            
-            try {
-                iniciarcronometro3();
-            } catch (ParseException ex) {
-                //Logger.getLogger(InterfaceReserva.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
         }
         
     }
