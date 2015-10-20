@@ -35,7 +35,7 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return String.valueOf(carro)+"-- Vaga: "+(vaga.getVagqtde());
+        return String.valueOf(carro);
        
     }
 

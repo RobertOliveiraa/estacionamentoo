@@ -142,6 +142,20 @@ public class SimpleMenuEx extends JFrame {
                 reservaSaida.criarTela();
             }
         });
+        eMenuAlterarCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                InterfaceAlterarCliente altercli=new InterfaceAlterarCliente();
+                altercli.criarTela();
+            }
+        });
+        eMenuAlterarCarro.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                InterfaceReservaSaida reservaSaida=new InterfaceReservaSaida();
+                reservaSaida.criarTela();
+            }
+        });
 
         filecliente.add(eMenuInserirCliente);
         filecliente.add(eMenuAlterarCliente);
