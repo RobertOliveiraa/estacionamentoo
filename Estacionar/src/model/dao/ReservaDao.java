@@ -9,7 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import model.bean.Carro;
 import model.bean.Reserva;
 import model.connection.ConnectionFactory;
 
@@ -24,6 +27,8 @@ public class ReservaDao {
     PreparedStatement pstm;
     ResultSet rs;
     String sql;
+    
+    List<Reserva> lista=new ArrayList<>();
     
     public void salvarReserva(Reserva reserva){
         try{
@@ -46,6 +51,37 @@ public class ReservaDao {
         }catch(Exception erro){
             JOptionPane.showMessageDialog(null, "Dados nao Salvo\n"+erro.getMessage());
         }
+    }
+    public List<Reserva> listarReserva(){
+                
+        
+        try{
+            
+            stm=con.createStatement();
+            sql="select rescod,rescarcod,carplaca from reserva inner join carro on carcod=rescarcod";
+            rs=stm.executeQuery(sql);
+            
+            while(rs.next()){
+                
+                Reserva reser=new Reserva();
+                Carro car=new Carro();
+                reser.setRescod(rs.getInt(1));
+                //car.setCarcod(rs.getInt(2));
+                //car.setCarpla(rs.getString(3));
+                reser.setCarro(car);
+                
+                
+                
+                lista.add(reser);
+                
+                
+            }
+            
+        }catch(Exception erro){
+            JOptionPane.showMessageDialog(null, erro);
+        }
+        
+        return lista;
     }
     
 }
