@@ -15,6 +15,15 @@ public class Carro {
     private String carmarca;
     private String carmodelo;
     private String carcor;
+    private Cliente cliente;
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
     @Override
     public String toString() {

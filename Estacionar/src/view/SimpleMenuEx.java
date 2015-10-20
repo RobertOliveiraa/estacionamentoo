@@ -36,8 +36,8 @@ public class SimpleMenuEx extends JFrame {
         
         createMenuBar();
 
-        setTitle("Simple menu");
-        setSize(800, 600);
+        setTitle("ESTACIONEMTNO");
+        //setSize(800, 600);
         setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -58,8 +58,12 @@ public class SimpleMenuEx extends JFrame {
         ImageIcon iconent = new ImageIcon("cima.png");
         ImageIcon iconsai = new ImageIcon("baixo.png");
         ImageIcon iconrel= new ImageIcon("pdf.png");
+        ImageIcon iconalter = new ImageIcon("alterar.png");
         
         //icon.getIconHeight(height);
+        Image imgalter = iconalter.getImage() ;
+         Image newimgalter = imgalter.getScaledInstance( 20, 20,  java.awt.Image.SCALE_SMOOTH ) ;  
+         iconalter = new ImageIcon( newimgalter );
          Image img = icon.getImage() ;
          Image newimg = img.getScaledInstance( 20, 20,  java.awt.Image.SCALE_SMOOTH ) ;  
          icon = new ImageIcon( newimg );
@@ -103,6 +107,12 @@ public class SimpleMenuEx extends JFrame {
         eMenuInserirEntrada.setMnemonic(KeyEvent.VK_E);
         JMenuItem eMenuInserirSaida = new JMenuItem("  Inserir", icon);
         eMenuInserirSaida.setMnemonic(KeyEvent.VK_E);
+        
+        JMenuItem eMenuAlterarCliente = new JMenuItem("  Alterar", iconalter);
+        eMenuAlterarCliente.setMnemonic(KeyEvent.VK_E);
+        JMenuItem eMenuAlterarCarro = new JMenuItem("  Alterar", iconalter);
+        eMenuAlterarCarro.setMnemonic(KeyEvent.VK_E);
+        
         //eMenuItem.setToolTipText("Exit application");
         eMenuInserirCliente.addActionListener(new ActionListener() {
             @Override
@@ -134,7 +144,9 @@ public class SimpleMenuEx extends JFrame {
         });
 
         filecliente.add(eMenuInserirCliente);
+        filecliente.add(eMenuAlterarCliente);
         filecarro.add(eMenuInserirCarro);
+        filecarro.add(eMenuAlterarCarro);
         fileentrada.add(eMenuInserirEntrada);
         filesaida.add(eMenuInserirSaida);
         

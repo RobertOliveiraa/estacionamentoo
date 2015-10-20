@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.bean.Carro;
+import model.bean.Cliente;
 import model.bean.Reserva;
+import model.bean.Vaga;
 import model.connection.ConnectionFactory;
 
 /**
@@ -100,16 +102,29 @@ public class ReservaDao {
             //}
             
             stm=con.createStatement();
-            sql="select rescod,resdthrent,resestatus from reserva";
+            sql="select rescod,resdthrent,carcod,carplaca,carmodelo,clicod,clinome,vagcod,vagqtde from (reserva join carro on( rescarcod = carcod)) join cliente on ( clicod = carclicod) join vaga on (vagcod = resvagcod)";
             rs=stm.executeQuery(sql);
             
             while(rs.next()){
                 
                 Reserva reser=new Reserva();
-                //Carro car=new Carro();
+                Carro car=new Carro();
+                Cliente cli=new Cliente();
+                Vaga vag=new Vaga();
                 reser.setRescod(rs.getInt(1));
                 reser.setResdthrent(rs.getString(2));
-                reser.setResestatus(rs.getString(3));
+                //reser.setResestatus(rs.getString(3));
+                car.setCarcod(rs.getInt(3));
+                car.setCarplaca(rs.getString(4));
+                car.setCarmodelo(rs.getString(5));
+                cli.setClicod(rs.getInt(6));
+                cli.setClinome(rs.getString(7));
+                vag.setVagcod(rs.getInt(8));
+                vag.setVagqtde(rs.getInt(9));
+                reser.setCarro(car);
+                reser.setVaga(vag);
+                car.setCliente(cli);
+                
                 //car.setCarcod(rs.getInt(2));
                 //car.setCarpla(rs.getString(3));
                 //reser.setCarro(car);

@@ -137,6 +137,7 @@ public class InterfaceReserva implements ActionListener{
         
         labelhrentrada.setBounds(30, 170,100, 30);
         txthrentrada.setBounds(30,200, 340, 30);
+        txthrentrada.setEditable(false);
         
 //        labelhrsaida.setBounds(30, 270,100, 30);
 //        txthrsaida.setBounds(30,300, 340, 30);

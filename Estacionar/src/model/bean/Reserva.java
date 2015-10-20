@@ -21,11 +21,25 @@ public class Reserva {
     private Double respagamento;
     private Double restroco;
     private String resestatus;
+    private Cliente cliente;
+    
+    
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
     @Override
     public String toString() {
-        return resdthrent;
+        return String.valueOf(carro)+"-- Vaga: "+(vaga.getVagqtde());
+       
     }
+
+    
     
     
     
